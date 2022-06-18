@@ -2,12 +2,16 @@
 package auth
 
 import (
+	"errors"
 	v1 "gohub/app/http/controllers/api/v1"
 	"gohub/app/models/user"
 	"gohub/app/requests"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
+
+	"gohub/pkg/logger"
 )
 
 // SignupController 注册控制器
@@ -17,7 +21,11 @@ type SignupController struct {
 
 // IsPhoneExist 检测手机号是否被注册
 func (sc *SignupController) IsPhoneExist(c *gin.Context) {
-
+	err := errors.New("this is a err test")
+	logger.Logger.Error(
+		"Error fetching url..",
+		zap.String("url", "---______++++"),
+		zap.Error(err))
 	// 初始化请求对象
 	request := requests.SignupPhoneExistRequest{}
 

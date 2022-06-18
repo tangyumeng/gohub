@@ -11,5 +11,5 @@ func IsProduction() bool {
 }
 
 func IsTesting() bool {
-	return config.Get("app.env") ==r "testing"
+	return config.Get("app.env") == "testing"
 }
