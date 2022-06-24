@@ -21,6 +21,7 @@ type SignupController struct {
 
 // IsPhoneExist 检测手机号是否被注册
 func (sc *SignupController) IsPhoneExist(c *gin.Context) {
+
 	err := errors.New("this is a err test")
 	logger.Logger.Error(
 		"Error fetching url..",
