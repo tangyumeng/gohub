@@ -38,6 +38,8 @@ func main() {
 	router := gin.New()
 
 	bootstrap.SetupDB()
+
+	bootstrap.SetupRedis()
 	// 初始化路由绑定r
 	bootstrap.SetupRoute(router)
 
