@@ -23,7 +23,7 @@ func NewCaptcha() *Captcha {
 
 		store := RedisStore{
 			RedisClient: redis.Redis,
-			KeyPrefix:   config.GetString("app.name") + ":captcha",
+			KeyPrefix:   config.GetString("app.name") + ":captcha:",
 		}
 
 		driver := base64Captcha.NewDriverDigit(
