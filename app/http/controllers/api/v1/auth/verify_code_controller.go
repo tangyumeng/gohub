@@ -4,7 +4,7 @@ import (
 	v1 "gohub/app/http/controllers/api/v1"
 	"gohub/pkg/captcha"
 	"gohub/pkg/logger"
-	"net/http"
+	"gohub/pkg/response"
 
 	"github.com/gin-gonic/gin"
 )
@@ -18,7 +18,11 @@ func (vc *VerifyCodeController) ShowCaptcha(c *gin.Context) {
 
 	logger.LogIf(err)
 
-	c.JSON(http.StatusOK, gin.H{
+	// c.JSON(http.StatusOK, gin.H{
+	// 	"capacha_id":    id,
+	// 	"capacha_image": b64s,
+	// })
+	response.JSON(c, gin.H{
 		"capacha_id":    id,
 		"capacha_image": b64s,
 	})
