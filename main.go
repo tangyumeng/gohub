@@ -8,6 +8,7 @@ import (
 	btsConfig "gohub/config"
 
 	"gohub/pkg/config"
+	"gohub/pkg/sms"
 
 	"github.com/gin-gonic/gin"
 )
@@ -42,6 +43,11 @@ func main() {
 	bootstrap.SetupRedis()
 	// 初始化路由绑定r
 	bootstrap.SetupRoute(router)
+
+	sms.NewSMS().Send("13552033797", sms.Message{
+		Template: config.GetString("sms.aliyun.template_code"),
+		Data:     map[string]string{"code": "888888"},
+	})
 
 	// logger.Dump(captcha.NewCaptcha().VerifyCaptcha("J91gZOjvac0ZVMGdsGdy", "296872"))
 	// logger.Dump(captcha.NewCaptcha().VerifyCaptcha("J91gZOjvac0ZVMGdsGdy", "000000"))
